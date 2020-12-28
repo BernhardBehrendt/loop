@@ -1,0 +1,62 @@
+<div *ngIf="readyToPlay">
+
+
+  <label>
+    <input type="checkbox" [(ngModel)]="audio.loop"> Loop sample
+  </label>
+
+  <br/>
+
+  <button (click)="fileSelect.click()">Test</button>
+
+  <label>
+    <input
+      style="display: none"
+      #fileSelect
+      type="file"
+      accept="audio/*"
+      (change)="handleFileSelection($event)"
+    >
+  </label>
+
+  <br/>
+
+  <label>
+
+    <input type="number"
+           [(ngModel)]="playFrom"
+           (change)="resolveLeaks()"
+           [min]="0"
+           [max]="audio.duration-smallestStep"
+           [step]="smallestStep"
+    >
+    Start position
+  </label>
+
+  <br/>
+
+  <label>
+    <input
+      type="number"
+      [(ngModel)]="playUntil"
+      (change)="resolveLeaks()"
+      [min]="playFrom+smallestStep"
+      [max]="audio.duration"
+      [step]="smallestStep"
+    >
+    End position
+  </label>
+
+  <br/>
+
+  <label>
+    <input min=".5" [step]="smallestStep" max="4" type="number" [(ngModel)]="audio.playbackRate"> Playback rate
+  </label>
+
+  <br/>
+
+  <button [disabled]="playing" (click)="start()">start</button>
+  <button [disabled]="!playing" (click)="stop()">stop</button>
+</div>
+
+<router-outlet></router-outlet>
