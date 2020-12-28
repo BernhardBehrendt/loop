@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {WrappedSocket} from '../../modules/socket-io/services/socket-io.service';
+import {WrappedSocket} from '../../../socket-io/services/socket-io.service';
 
 
 @Component({
