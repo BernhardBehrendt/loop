@@ -1,4 +1,5 @@
 import {v4 as uuidv4} from 'uuid';
+import {Socket} from 'socket.io';
 
 const express = require('express');
 const app = express();
@@ -7,11 +8,12 @@ const io = require('socket.io')(server, {'transports': ['websocket', 'polling']}
 
 const CLIENT_DIR = `${__dirname}/../client/dist`;
 
-io.on('connection', (socket) => {
+io.on('connection', (socket: Socket) => {
     console.log('a user connected');
 
     socket.on('join-room', (roomId: string, userId: string) => {
-        console.log(roomId, userId);
+        socket.join(roomId);
+        socket.to(roomId).broadcast.emit('user-connected', userId);
     });
 });
 
