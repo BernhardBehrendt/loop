@@ -8,6 +8,7 @@ import {PageNotFoundComponent} from './components/page-not-found/page-not-found.
 import {PageLetsStartComponent} from './components/page-lets-start/page-lets-start.component';
 import {SocketIoConfig} from '../socket-io/interfaces/socket-io-config';
 import {SocketIoModule} from '../socket-io/socket-io.module';
+import { LoopComponent } from './components/loop/loop.component';
 
 const config: SocketIoConfig = {url: '/', options: {'transports': ['websocket', 'polling']}};
 
@@ -15,7 +16,8 @@ const config: SocketIoConfig = {url: '/', options: {'transports': ['websocket', 
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    PageLetsStartComponent
+    PageLetsStartComponent,
+    LoopComponent
   ],
   imports: [
     BrowserModule,

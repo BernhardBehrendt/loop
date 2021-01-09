@@ -2,4 +2,15 @@
 
   <h1>Got params</h1>
   <pre>{{params|json}}</pre>
+
+  <app-loop (loop)="broadcastLoop($event)"></app-loop>
+
+  <hr/>
+  <pre *ngIf="!!data">{{data|json}}</pre>
+
+  <app-loop *ngIf="!!data" [data]="data" ></app-loop>
+
+
+
+
 </div>
